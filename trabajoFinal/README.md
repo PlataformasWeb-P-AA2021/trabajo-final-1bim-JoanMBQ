@@ -1,15 +1,18 @@
-# Trabajo Final Primer Bimestre
+# Documentación
 
 El Archivo ***configuracion.py*** solo contiene información de las configuraciones posibles configuraciones.
 Por el momento solo contiene la cadena conector a la base de datos
 
 Para empezar con el proyecto se hace lo siguiente:
 
-* En primer lugar se crean las tablas que componen a la base de datos ejecutando el archivo:
+* En primer lugar se crean las tablas que componen a la base de datos ejecutando el archivo ***genera_tablas.py*** que contiene las siguientes entidades:
 
-	* genera_tablas.py
+	* provincia
+	* canton
+	* parroquia
+	* establecimiento
 
-* Luego para evitar errores o falta de datos, la ejecución de los archivos .py debe ser el siguiente:
+* Luego para evitar errores o falta de datos, el orden de la ejecución de los archivos .py debe ser el siguiente:
 
 	* ingresa_provincias.py
 	* ingresa_cantones.py
