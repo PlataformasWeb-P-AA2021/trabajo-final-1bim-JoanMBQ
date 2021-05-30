@@ -17,7 +17,7 @@ session = Session()
 
 # Los establecimientos ordenados por nombre de parroquia que tengan más de
 # 20 profesores y la cadena "Permanente" en tipo de educación.
-consultaEst = session.query(Establecimiento)\
+consulta1 = session.query(Establecimiento)\
     .join(Parroquia)\
     .filter(and_(Establecimiento.num_Docentes > 20 , Establecimiento.tipo\
         .like("%Permanente%")))\
@@ -25,7 +25,7 @@ consultaEst = session.query(Establecimiento)\
 
 # Se imprimen los resultados
 print("ESTABLECIMIENTOS ORDENADOS POR NOMBRE CON MÁS DE 20 PROFESORES\n")
-for x in consultaEst:
+for x in consulta1:
     print("Código AMIE: %-10s || Num Docentes %-5s || Institución: %s" % 
         (x.id, x.num_Docentes, x.nombre_establecimiento))
 print("\n\n")
@@ -33,12 +33,12 @@ print("\n\n")
 #---------------------------------------------------------------
 
 # Todos los establecimientos ordenados por sostenimiento y tengan código de distrito 11D02.
-consultaEst = session.query(Establecimiento)\
+consulta2 = session.query(Establecimiento)\
     .filter(Establecimiento.distrito == "11D02")\
     .order_by(Establecimiento.sostenimiento).all()
 
 # Se imprimen los resultados
 print("ESTABLECIMIENTOS ORDENADOS POR SOSTENIMIENTO DEL DISTRTIO 11D02")
-for x in consultaEst:
+for x in consulta2:
     print("Código AMIE: %-10s || Sostenimiento %-15s || Institución: %s" % 
         (x.id, x.sostenimiento, x.nombre_establecimiento))

@@ -16,13 +16,13 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Las parroquias que tienen establecimientos únicamente en la jornada Nocturna
-consultaPqa = session.query(Parroquia)\
+consulta1 = session.query(Parroquia)\
     .join(Establecimiento)\
     .filter(Establecimiento.jornada == 'Nocturna').all()
 
 # Se imprimen los resultados
 print("PARROQUIAS CON ESTABLIMIENTOS UNICAMENTO CON JORDNADA NOCTURNA\n")
-for x in consultaPqa:
+for x in consulta1:
     print("Cod Parroquia: %-7s || Parroquia: %s" % 
         (x.id, x.nombre_parroquia))
 print("\n\n")
@@ -31,7 +31,7 @@ print("\n\n")
 
 # Los cantones que tiene establecimientos como número de estudiantes tales como:
 # 448, 450, 451, 454, 458, 459
-consultaCanton = session.query(Canton)\
+consulta2 = session.query(Canton)\
     .join(Parroquia, Establecimiento)\
     .filter(or_(
         Establecimiento.num_Estudiantes == 448 , 
@@ -43,6 +43,6 @@ consultaCanton = session.query(Canton)\
 
 # Se imprimen los resultados
 print("CANTONES CON ESTABLECIMIENTOS CON: 448, 450, 451, 454, 458, 459 ESTUDIANTES:\n")
-for x in consultaCanton:
+for x in consulta2:
     print("Cod Cantón: %-5s || Cantón: %s" % 
         (x.id, x.nombre_canton))

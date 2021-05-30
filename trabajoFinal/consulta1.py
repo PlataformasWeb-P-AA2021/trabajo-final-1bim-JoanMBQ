@@ -16,13 +16,13 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 # Todos los establecimientos de la provincia de Loja.
-consultaEstProv = session.query(Establecimiento)\
+consulta1 = session.query(Establecimiento)\
     .join(Parroquia, Canton, Provincia)\
     .filter(Provincia.nombre_provincia == 'LOJA').all()
 
 # Se imprimen los resultados
 print("ESTABLECIMIENTOS DE LA PROVINCIA DE LOJA\n")
-for x in consultaEstProv:
+for x in consulta1:
     print("Código AMIE: %-10s || Sostenimiento %-15s || Institución: %s" % 
         (x.id, x.sostenimiento, x.nombre_establecimiento))
 print("\n\n")
@@ -30,13 +30,13 @@ print("\n\n")
 #---------------------------------------------------------------
 
 # Todos los establecimientos del cantón de Loja.
-consultaEstCanton = session.query(Establecimiento)\
+consulta2 = session.query(Establecimiento)\
     .join(Parroquia, Canton)\
     .filter(Canton.nombre_canton == 'LOJA').all()
 
 # Se imprimen los resultados
 print("ESTABLECIMIENTOS DEL CANTON DE LOJA\n")
-for x in consultaEstCanton:
+for x in consulta2:
     print("Código AMIE: %-10s || Sostenimiento %-15s || Institución: %s" % 
         (x.id, x.sostenimiento, x.nombre_establecimiento))
 print("\n\n")
